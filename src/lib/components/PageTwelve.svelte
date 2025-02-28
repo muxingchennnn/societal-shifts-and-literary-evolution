@@ -53,6 +53,20 @@
 					href="https://www.britannica.com/art/science-fiction">Science fiction.</a
 				>
 			</p>
+			<p>
+				- David W. Dunlap. 2015. <a
+					target="_blank"
+					href="https://www.nytimes.com/2015/09/30/insider/life-on-mars-you-read-it-here-first.html"
+					>Life on Mars? You Read It Here First.</a
+				>
+			</p>
+			<p>
+				- Chris M. Arnone. 2024. <a
+					target="_blank"
+					href="https://bookriot.com/the-most-popular-book-genres/"
+					>The Most Popular Book Genres Right Now.</a
+				>
+			</p>
 		</section>
 		<section>
 			<h4>Design</h4>
@@ -120,8 +134,8 @@
 <style lang="postcss">
 	@reference "tailwindcss/theme";
 
-	.note-body {
-		@apply font-sans text-[1rem] leading-[1.5rem] font-[200] tracking-[-0.014rem];
+	.note-body p {
+		@apply font-sans text-[1rem] leading-[1.5rem] font-[200] tracking-[-0.011rem];
 	}
 
 	/* prettier-ignore */

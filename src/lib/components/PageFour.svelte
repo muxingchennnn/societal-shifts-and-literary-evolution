@@ -1,12 +1,16 @@
 <article>
 	<p>
-		These graphs of three genres’ popularity over the last 50 years illustrate this idea fairly
-		well: taken from a Goodreads poll evaluating the “best books of all time,” we can clearly see
-		that:
+		The way we categorize stories has changed over the centuries, in large part because as society
+		and technology develop, so too do the stories we tell.
 	</p>
 	<p>
-		Middle Grade & Children’s Fiction has also increased in popularity over the years. Books for
-		that specific demographic- children- were not commonly written before the 1850s, and were not
-		particularly marketable before the 1970s.
+		These graphs of three genres’ popularity over the last 50 years illustrate this idea fairly
+		well:
+	</p>
+	<p>
+		<span class="font-[1.125rem] font-bold text-[#FFCD29]">Middle Grade & Children’s Fiction</span> has
+		also increased in popularity over the years. Books for that specific demographic- children- were
+		not commonly written before the 1850s, and were not particularly marketable before the 1970s. For
+		most of literary history, fiction books were written for adult audiences!
 	</p>
 </article>

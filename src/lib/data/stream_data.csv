@@ -1,0 +1,154 @@
+year,genres,count
+1970,Middle Grade,0
+1971,Middle Grade,9
+1972,Middle Grade,9
+1973,Middle Grade,9
+1974,Middle Grade,11
+1975,Middle Grade,12
+1976,Middle Grade,7
+1977,Middle Grade,14
+1978,Middle Grade,6
+1979,Middle Grade,6
+1980,Middle Grade,16
+1981,Middle Grade,12
+1982,Middle Grade,8
+1983,Middle Grade,8
+1984,Middle Grade,9
+1985,Middle Grade,15
+1986,Middle Grade,15
+1987,Middle Grade,12
+1988,Middle Grade,14
+1989,Middle Grade,17
+1990,Middle Grade,22
+1991,Middle Grade,15
+1992,Middle Grade,18
+1993,Middle Grade,17
+1994,Middle Grade,18
+1995,Middle Grade,30
+1996,Middle Grade,23
+1997,Middle Grade,35
+1998,Middle Grade,37
+1999,Middle Grade,39
+2000,Middle Grade,79
+2001,Middle Grade,68
+2002,Middle Grade,53
+2003,Middle Grade,69
+2004,Middle Grade,87
+2005,Middle Grade,91
+2006,Middle Grade,83
+2007,Middle Grade,85
+2008,Middle Grade,84
+2009,Middle Grade,94
+2010,Middle Grade,100
+2011,Middle Grade,59
+2012,Middle Grade,53
+2013,Middle Grade,47
+2014,Middle Grade,33
+2015,Middle Grade,34
+2016,Middle Grade,16
+2017,Middle Grade,14
+2018,Middle Grade,10
+2019,Middle Grade,6
+2020,Middle Grade,3
+1970,Science Fiction,18
+1971,Science Fiction,14
+1972,Science Fiction,22
+1973,Science Fiction,17
+1974,Science Fiction,14
+1975,Science Fiction,20
+1976,Science Fiction,25
+1977,Science Fiction,29
+1978,Science Fiction,25
+1979,Science Fiction,36
+1980,Science Fiction,34
+1981,Science Fiction,31
+1982,Science Fiction,42
+1983,Science Fiction,46
+1984,Science Fiction,46
+1985,Science Fiction,49
+1986,Science Fiction,45
+1987,Science Fiction,51
+1988,Science Fiction,39
+1989,Science Fiction,44
+1990,Science Fiction,54
+1991,Science Fiction,38
+1992,Science Fiction,48
+1993,Science Fiction,50
+1994,Science Fiction,45
+1995,Science Fiction,60
+1996,Science Fiction,69
+1997,Science Fiction,61
+1998,Science Fiction,64
+1999,Science Fiction,70
+2000,Science Fiction,57
+2001,Science Fiction,66
+2002,Science Fiction,87
+2003,Science Fiction,93
+2004,Science Fiction,103
+2005,Science Fiction,94
+2006,Science Fiction,85
+2007,Science Fiction,78
+2008,Science Fiction,79
+2009,Science Fiction,104
+2010,Science Fiction,108
+2011,Science Fiction,143
+2012,Science Fiction,150
+2013,Science Fiction,116
+2014,Science Fiction,86
+2015,Science Fiction,51
+2016,Science Fiction,33
+2017,Science Fiction,21
+2018,Science Fiction,13
+2019,Science Fiction,8
+2020,Science Fiction,4
+1970,Romance,12
+1971,Romance,13
+1972,Romance,13
+1973,Romance,12
+1974,Romance,15
+1975,Romance,16
+1976,Romance,20
+1977,Romance,16
+1978,Romance,24
+1979,Romance,18
+1980,Romance,28
+1981,Romance,26
+1982,Romance,43
+1983,Romance,33
+1984,Romance,39
+1985,Romance,48
+1986,Romance,37
+1987,Romance,48
+1988,Romance,53
+1989,Romance,50
+1990,Romance,50
+1991,Romance,71
+1992,Romance,65
+1993,Romance,71
+1994,Romance,78
+1995,Romance,84
+1996,Romance,105
+1997,Romance,102
+1998,Romance,93
+1999,Romance,123
+2000,Romance,139
+2001,Romance,149
+2002,Romance,192
+2003,Romance,221
+2004,Romance,249
+2005,Romance,248
+2006,Romance,250
+2007,Romance,254
+2008,Romance,279
+2009,Romance,403
+2010,Romance,474
+2011,Romance,547
+2012,Romance,580
+2013,Romance,605
+2014,Romance,486
+2015,Romance,222
+2016,Romance,86
+2017,Romance,54
+2018,Romance,40
+2019,Romance,34
+2020,Romance,16
