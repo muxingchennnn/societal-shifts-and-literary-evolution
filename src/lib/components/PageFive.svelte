@@ -14,7 +14,7 @@
 		have popped up across literature for thousands of years- including fantastical flying machines in
 		the sacred Hindu text the <span class="italic-serif">Rig Veda</span>, written almost three
 		thousand years ago. But the genre itself only truly emerged alongside the technological boom of
-		the Industrial Revolution. Mary Shelley’s<span class="italic-serif"> Frankenstein</span> (1818) is
+		the Industrial Revolution. Mary Shelley’s <span class="italic-serif">Frankenstein</span> (1818) is
 		often credited as the first true science fiction novel.
 	</p>
 </article>
