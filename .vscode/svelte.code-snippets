@@ -1,0 +1,50 @@
+{
+	"Svelte $state()": {
+		"prefix": "s-st",
+		"body": "let ${1:name} = $$state(${2});${3}",
+		"description": "Creates a svelte $state() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte $derived()": {
+		"prefix": "s-de",
+		"body": "let ${1:name} = $$derived(${2});${3}",
+		"description": "Creates a svelte $derived() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte $derived.by()": {
+		"prefix": "s-deby",
+		"body": "let ${1:name} = $$derived.by(() => {\n\treturn\t${2}\n});${3}",
+		"description": "Creates a svelte $derived.by() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte $effect()": {
+		"prefix": "s-ef",
+		"body": "$$effect(() => {\n\t${1}\n});${2}",
+		"description": "Creates a svelte $effect() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte $props()": {
+		"prefix": "s-pr",
+		"body": "let { ${1:name} } = $$props()${2}",
+		"description": "Creates a svelte $props() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte $inspect()": {
+		"prefix": "s-in",
+		"body": "$$inspect(${1})",
+		"description": "Creates a svelte $inspect() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#each...}": {
+		"prefix": "s-each",
+		"body": "{#each ${1:items} as ${2:item}, i (${3:id})}\n\t${4}\n{/each}",
+		"description": "Creates a svelte $inspect() declaration",
+		"scope": "javascript, typescript, svelte"
+	}
+}

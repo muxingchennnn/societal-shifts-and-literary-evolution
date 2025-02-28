@@ -1,0 +1,8 @@
+{
+	"SVG <circle />": {
+		"prefix": "svg-circle",
+		"body": "<circle cx={${1}} cy={${2}} r={${3}} fill=\"${4}\" />${5}",
+		"description": "Creates a SVG <circle /> element",
+		"scope": "javascript, typescript, svelte, html"
+	}
+}
