@@ -1,38 +1,16 @@
-# sv
+Muxing Chen and Bethany Ward
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+When mousing over the bubble grid, each bubble should pop up with its corresponding book's information (title, author, genre(s); and on the penultimate page, the user can switch between viewing data for Science Fiction and other genres via the dropdown menu. 
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+Sources & references: 
+Design
+- David Mora and Michelle Jia. 2024. Is the love song dying?
+- Alice Liang, Jan Diehm and Sandra Chiu. 2023. What does a happily ever after look like?
 
-```bash
-# create a new project in the current directory
-npx sv create
+Dataset
+- Pooria Mostafapoor. 2025. Best Books Ever Dataset.
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Code
+- D3 Gallery. 2023. Streamgraph.
+- Connor Rothschild. 2024. Build a Beeswarm Chart with Svelte and D3.
