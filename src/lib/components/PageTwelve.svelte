@@ -79,7 +79,7 @@
 			<p>
 				- Alice Liang, Jan Diehm and Sandra Chiu. 2023. <a
 					target="_blank"
-					href="https://pudding.cool/2023/10/romance-covers/">Is the love song dying?</a
+					href="https://pudding.cool/2023/10/romance-covers/">What does a happily ever after look like?</a
 				>
 			</p>
 		</section>
