@@ -9,7 +9,7 @@
 		and horror elements” could have been published as merely “gothic” several decades ago.
 	</p>
 	<p>
-		he technology and societal norms of the day matter just as much in the categorization as they do
-		the writing of the book itself. For example…
+		The technology and societal norms of the day matter just as much in the categorization as they do
+		the writing of the book itself. Take, for example…
 	</p>
 </article>
