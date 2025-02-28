@@ -6,15 +6,21 @@
 	import SwarmDateAxis from '$lib/components/SwarmDateAxis.svelte';
 	import SwarmTooltip from '$lib/components/SwarmTooltip.svelte';
 	import { fade } from 'svelte/transition';
+	import { tick } from 'svelte';
+	import { genres, selectedGenre } from '$lib/globalState.svelte.js';
 
 	let { data } = $props();
 	let isHorizontal = $state(true);
 
-	const scifiData = data.filter((d) =>
-		['Science Fiction'].some((genre) => d.genres.includes(genre))
+	$inspect(currentPage.value);
+
+	let selectedData = $derived.by(() =>
+		data.filter((d) => [selectedGenre.value].some((genre) => d.genres.includes(genre)))
 	);
-	const callOutData = scifiData.filter((d) => d.title === 'The Martian (The Martian #1)').at(0);
-	$inspect(callOutData);
+
+	$inspect(selectedData);
+	const callOutData = selectedData.filter((d) => d.title === 'The Martian (The Martian #1)').at(0);
+	// $inspect(callOutData);
 
 	const chartMargin = { top: 0, right: 60, bottom: 20, left: 60 };
 	let width = $state(400);
@@ -25,14 +31,14 @@
 	// date axis on wide screen
 	let dateXScale = $derived.by(() => {
 		return scaleTime()
-			.domain(extent(scifiData, (d) => d.date))
+			.domain(extent(selectedData, (d) => d.date))
 			.range([0, chartWidth]);
 	});
 
 	// date axis on mobile
 	let dateYScale = $derived.by(() => {
 		return scaleTime()
-			.domain(extent(scifiData, (d) => d.date))
+			.domain(extent(selectedData, (d) => d.date))
 			.range([0, chartHeight]);
 	});
 
@@ -41,16 +47,21 @@
 	// radius scale
 	let rScale = $derived.by(() => {
 		return scaleSqrt()
-			.domain(extent(scifiData, (d) => d.rating))
+			.domain(extent(selectedData, (d) => d.rating))
 			.range([2, isHorizontal ? 6 : 4]);
 	});
 
 	let nodes = $state([]);
-	let hoveredNode = $state(callOutData);
+	let hoveredNode = $state(null);
 
-	const simulation = forceSimulation(scifiData);
-	simulation.on('tick', () => {
-		nodes = simulation.nodes();
+	let simulation;
+
+	$effect(() => {
+		simulation = forceSimulation(selectedData);
+
+		simulation.on('tick', () => {
+			nodes = simulation.nodes();
+		});
 	});
 
 	$effect(() => {
@@ -89,7 +100,12 @@
 
 	$effect(() => {
 		if (currentPage.value === 7) {
-			hoveredNode = callOutData;
+			selectedGenre.value = 'Science Fiction';
+			tick().then(() => {
+				hoveredNode = callOutData;
+			});
+		} else {
+			hoveredNode = null;
 		}
 	});
 
@@ -102,11 +118,6 @@
 	});
 </script>
 
-<!-- <svelte:window bind:innerWidth={width} bind:innerHeight={height} /> -->
-<!-- chart title -->
-<!-- <h1 class="absolute top-0 left-[2rem] bg-black text-[2rem] font-[700]">
-	Sci-fi books from 70s to 20s
-</h1> -->
 <!-- chart body -->
 <div class="chart-container h-full w-full" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg class="absolute top-0 left-0" {width} {height}>
@@ -127,7 +138,20 @@
 			{/each}
 		</g>
 	</svg>
-	<h1 class="chart-title">Sci-fi books from 70s to 20s</h1>
+	<h1 class="chart-title">{selectedGenre.value} books from 70s to 20s</h1>
+	{#if currentPage.value === 11}
+		<select
+			bind:value={selectedGenre.value}
+			class="absolute top-[3rem] left-[3rem] w-[16rem] border-[1px] border-solid border-gray-500 bg-gray-700 p-2"
+		>
+			{#each genres as genre}
+				<option value={genre.value}>
+					{genre.label}
+				</option>
+			{/each}
+		</select>
+	{/if}
+
 	<!-- Swarmtooltip -->
 	{#if hoveredNode}
 		<SwarmTooltip {hoveredNode} {chartWidth} {chartHeight} />

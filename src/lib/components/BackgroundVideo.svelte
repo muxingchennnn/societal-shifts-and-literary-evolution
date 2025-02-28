@@ -15,7 +15,7 @@
 			return bgVideoFireSrc;
 		}
 	});
-	$inspect(videoSrc);
+	// $inspect(videoSrc);
 
 	$effect(() => {
 		if (videoSrc) {

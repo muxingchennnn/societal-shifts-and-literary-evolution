@@ -10,7 +10,7 @@
 	let { data } = $props();
 	let hoveredStream = $state(null);
 
-	$inspect(hoveredStream);
+	// $inspect(hoveredStream);
 
 	const chartMargin = { top: 0, right: 60, bottom: 20, left: 60 };
 	let width = $state(400);

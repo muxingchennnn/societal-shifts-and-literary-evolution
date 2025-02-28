@@ -2,14 +2,12 @@
 	import { timeFormat } from 'd3-time-format';
 	let { hoveredNode, chartWidth, chartHeight } = $props();
 
-	console.log(hoveredNode.genres);
+	$inspect(hoveredNode);
 
 	let tooltipHeight = $state(400);
 	const tooltipWidth = 400;
 	const xNudge = 80;
 	const yNudge = 20;
-
-	$inspect(hoveredNode.y + yNudge + tooltipHeight - chartHeight);
 
 	let xPosition = $derived.by(() =>
 		hoveredNode.x + xNudge + tooltipWidth > chartWidth

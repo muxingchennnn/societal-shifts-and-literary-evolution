@@ -45,35 +45,12 @@
 >
 	<StreamGraph data={streamData} />
 </div>
-<div class="swarm-ctn {currentPage.value === 7 ? 'block' : 'hidden'}">
+<div class="swarm-ctn {currentPage.value === 7 || currentPage.value === 11 ? 'block' : 'hidden'}">
 	<SwarmChart data={bookData} />
 </div>
 
 <style lang="postcss">
 	@reference "tailwindcss/theme";
-
-	/* prettier-ignore */
-	:global(.grid-ctn) {
-		@apply grid grid-cols-4 mx-[2rem] gap-x-[1rem] gap-y-[2px] max-w-[1440px] 
-					 sm:grid-cols-8 sm:mx-[3rem] 
-					 md:gap-x-[1.5rem]
-					 lg:grid-cols-12 
-					 2xl:mx-auto;
-	}
-
-	/* prettier-ignore */
-	:global(article) {
-		@apply mx-auto max-w-[400px] mt-[4rem]
-					 flex flex-col gap-[1rem] 
-		       sm:max-w-[600px]
-					 md:max-w-[750px];
-	}
-
-	/* prettier-ignore */
-	:global(p) {
-		@apply text-[1rem] leading-[1.5rem] tracking-[-0.011rem] font-[400]
-		       sm:text-[1.125rem] sm:leading-[1.5rem] sm:tracking-[-0.014rem];
-	}
 
 	/* prettier-ignore */
 	.stream-ctn {
