@@ -10,38 +10,35 @@
 	import { genres, selectedGenre } from '$lib/globalState.svelte.js';
 
 	let { data } = $props();
-	let isHorizontal = $state(true);
-
-	$inspect(currentPage.value);
-
 	let selectedData = $derived.by(() =>
 		data.filter((d) => [selectedGenre.value].some((genre) => d.genres.includes(genre)))
 	);
+	// $inspect(selectedData);
 
-	$inspect(selectedData);
-	const callOutData = selectedData.filter((d) => d.title === 'The Martian (The Martian #1)').at(0);
-	// $inspect(callOutData);
+	let isHorizontal = $state(true);
 
+	// dimensions of the visualization
 	const chartMargin = { top: 0, right: 60, bottom: 20, left: 60 };
 	let width = $state(400);
 	let height = $state(400);
 	let chartWidth = $derived(width - chartMargin.left - chartMargin.right);
 	let chartHeight = $derived(height - chartMargin.top - chartMargin.bottom);
 
-	// date axis on wide screen
+	// date scale on wide screen
 	let dateXScale = $derived.by(() => {
 		return scaleTime()
 			.domain(extent(selectedData, (d) => d.date))
 			.range([0, chartWidth]);
 	});
 
-	// date axis on mobile
+	// date scale on mobile
 	let dateYScale = $derived.by(() => {
 		return scaleTime()
 			.domain(extent(selectedData, (d) => d.date))
 			.range([0, chartHeight]);
 	});
 
+	// a derived scale based on orientation that depends on screen size
 	let dateScale = $derived.by(() => (isHorizontal ? dateXScale : dateYScale));
 
 	// radius scale
@@ -52,9 +49,12 @@
 	});
 
 	let nodes = $state([]);
-	let hoveredNode = $state(null);
-
+	// $inspect(nodes);
 	let simulation;
+	let hoveredNode = $state(null);
+	const calloutBookTitle = 'The Martian (The Martian #1)';
+	let calloutData = $derived.by(() => nodes.filter((d) => d.title === calloutBookTitle).at(0));
+	// $inspect(calloutData);
 
 	$effect(() => {
 		simulation = forceSimulation(selectedData);
@@ -101,15 +101,14 @@
 	$effect(() => {
 		if (currentPage.value === 7) {
 			selectedGenre.value = 'Science Fiction';
-			tick().then(() => {
-				hoveredNode = callOutData;
-			});
+			hoveredNode = calloutData;
 		} else {
 			hoveredNode = null;
 		}
 	});
 
 	$effect(() => {
+		// decide orientation based on screen width
 		if (windowWidth.value > 1024) {
 			isHorizontal = true;
 		} else {
@@ -118,11 +117,10 @@
 	});
 </script>
 
-<!-- chart body -->
+<!-- Visualization -->
 <div class="chart-container h-full w-full" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg class="absolute top-0 left-0" {width} {height}>
 		<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
-			<!-- <SwarmDateXAxis {xScale} {chartWidth} {chartHeight} /> -->
 			<SwarmDateAxis {dateScale} {chartWidth} {chartHeight} {isHorizontal} />
 			{#each nodes as node}
 				<circle
@@ -152,7 +150,7 @@
 		</select>
 	{/if}
 
-	<!-- Swarmtooltip -->
+	<!-- Tooltip -->
 	{#if hoveredNode}
 		<SwarmTooltip {hoveredNode} {chartWidth} {chartHeight} />
 	{/if}
@@ -168,17 +166,14 @@
 
 	circle {
 		cursor: pointer;
-		/* transition:
-			fill 100ms ease,
-			opacity 100ms ease; */
 	}
 
 	/* prettier-ignore */
 	.chart-title {
-		@apply absolute top-0 left-1/2 -translate-x-1/2 
-		       min-w-[400px] text-center
+		@apply absolute top-0 left-1/2 -translate-x-1/2  
+		       min-w-[400px] 
 		       bg-black/50 
-					 font-serif text-[1rem] font-[700] 
+					 font-serif text-[1rem] font-[700] text-center
            md:absolute md:left-[3rem] md:-translate-x-0
 					 md:text-left;
 	}

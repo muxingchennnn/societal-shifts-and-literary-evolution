@@ -54,13 +54,13 @@
 
 	/* prettier-ignore */
 	.stream-ctn {
-		@apply h-[90vh] w-full mt-[2rem]
+		@apply h-[90vh] w-full mb-[3rem]
 					 md:fixed md:bottom-0 md:left-0 md:h-[65vh];
 	}
 
 	/* prettier-ignore */
 	.swarm-ctn {
-		@apply h-[120vh] w-full mt-[2rem]   
+		@apply h-[120vh] w-full mb-[3rem]   
 					 lg:fixed lg:bottom-0 lg:left-0 lg:h-[70vh];
 	}
 </style>

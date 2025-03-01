@@ -3,7 +3,7 @@
 </script>
 
 <!-- <Grid /> -->
-<footer class="grid-ctn note-body mt-[4rem] h-auto">
+<footer class="grid-ctn note-body mt-[4rem] mb-[4rem] h-auto">
 	<p class="col-span-4 h-auto">
 		A story made by Muxing Chen and Bethany Ward <br /><br /> Advised by Prof. Rahul Bhargava<br />
 		JRNL 5500 Coding for Digital Storytelling<br /> Northeastern University

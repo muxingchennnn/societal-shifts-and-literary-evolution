@@ -33,18 +33,20 @@ body {
 	font-optical-sizing: auto;
 }
 
+/* style of the grid on page 12 */
 /* prettier-ignore */
 .grid-ctn {
   @apply grid grid-cols-4 mx-[2rem] gap-x-[1rem] gap-y-[2px] max-w-[1440px] 
          sm:grid-cols-8 sm:mx-[3rem] 
          md:gap-x-[1.5rem]
          lg:grid-cols-12 
-         2xl:mx-auto;
+         xl:mx-auto;
 }
 
+/* style of the text components */
 /* prettier-ignore */
 article {
-  @apply mx-auto max-w-[400px] mt-[4rem]
+  @apply mx-auto max-w-[400px] mt-[4rem] mb-[2rem]
          flex flex-col gap-[1rem] 
          sm:max-w-[600px]
          md:max-w-[750px];
