@@ -137,8 +137,10 @@
 		</g>
 	</svg>
 	<h1 class="chart-title">{selectedGenre.value} books from 70s to 20s</h1>
+
+	<!-- Drop Down Menu -->
 	{#if currentPage.value === 11}
-		<select bind:value={selectedGenre.value} class=" dropdown-menu">
+		<select bind:value={selectedGenre.value} class="dropdown-menu">
 			{#each genres as genre}
 				<option value={genre.value}>
 					{genre.label}
@@ -177,7 +179,7 @@
 
 	/* prettier-ignore */
 	.dropdown-menu {
-		@apply absolute top-[3rem] left-1/2 -translate-x-1/2  
+		@apply absolute top-[3rem] left-1/2 -translate-x-1/2 rounded-md opacity-70
 		       w-[18rem] border-[1px] border-solid border-gray-500 bg-gray-700 p-2
 		       md:left-[3rem] md:-translate-x-0;
 	}
