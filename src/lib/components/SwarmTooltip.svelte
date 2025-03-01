@@ -1,5 +1,6 @@
 <script>
 	import { timeFormat } from 'd3-time-format';
+	import { currentPage, windowWidth } from '$lib/globalState.svelte.js';
 	let { hoveredNode, chartWidth, chartHeight } = $props();
 
 	$inspect(hoveredNode);
@@ -23,8 +24,10 @@
 </script>
 
 <div
-	class="tooltip"
-	style="left: {xPosition}px; top: {yPosition}px;"
+	class="tooltip translate-x-[-50%] lg:translate-x-0"
+	style="left: {windowWidth.value <= 1024
+		? windowWidth.value / 2
+		: xPosition}px; top: {yPosition}px;"
 	bind:clientHeight={tooltipHeight}
 >
 	<div class="flex items-start gap-[1rem]">
@@ -71,7 +74,7 @@
 
 	/* prettier-ignore */
 	.tooltip {
-		@apply absolute max-w-[400px]
+		@apply absolute w-[400px]
            rounded border border-solid border-[#2c2c2c] bg-[rgb(44,44,44)]/[.4] p-[1rem] backdrop-blur-sm;
 	}
 
