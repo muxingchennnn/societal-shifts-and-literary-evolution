@@ -50,7 +50,7 @@
 
 	/* prettier-ignore */
 	.tooltip {
-		@apply absolute rounded border border-solid border-[#2c2c2c] bg-[rgb(44,44,44)]/[.4] p-[1rem] backdrop-blur-sm;
+		@apply absolute rounded border border-solid border-[#2c2c2c] bg-[rgb(44,44,44)]/40 p-[1rem] backdrop-blur-sm;
 	}
 
 	.tooltip-text p {
