@@ -79,7 +79,8 @@
 			<p>
 				- Alice Liang, Jan Diehm and Sandra Chiu. 2023. <a
 					target="_blank"
-					href="https://pudding.cool/2023/10/romance-covers/">What does a happily ever after look like?</a
+					href="https://pudding.cool/2023/10/romance-covers/"
+					>What does a happily ever after look like?</a
 				>
 			</p>
 		</section>
@@ -103,7 +104,7 @@
 			<p>
 				- Connor Rothschild. 2024. <a
 					target="_blank"
-					href="https://observablehq.com/@d3/streamgraph/2"
+					href="https://www.youtube.com/watch?v=5IcY0biPhoQ"
 					>Build a Beeswarm Chart with Svelte and D3.</a
 				>
 			</p>
@@ -111,8 +112,9 @@
 		<section>
 			<h4>Video</h4>
 			<p>
-				- Nightwolfone. 2022. <a target="_blank" href="https://www.youtube.com/watch?v=5IcY0biPhoQ"
-					>Pixabay.</a
+				- Nightwolfone. 2022. <a
+					target="_blank"
+					href="https://pixabay.com/videos/fire-advent-punch-night-christmas-143319/">Pixabay.</a
 				>
 			</p>
 			<p>
