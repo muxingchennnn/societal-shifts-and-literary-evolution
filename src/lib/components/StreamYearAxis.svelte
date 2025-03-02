@@ -9,7 +9,7 @@
 	// $inspect(ticks);
 </script>
 
-<g>
+<g class="ticks">
 	{#each ticks as tick, i (i)}
 		<g class="tick" transform="translate({yearScale(tick)}, 0)">
 			<text x="8" y={chartHeight} fill="var(--color-foreground)"

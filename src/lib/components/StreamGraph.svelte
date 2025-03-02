@@ -6,18 +6,17 @@
 	import { fade } from 'svelte/transition';
 	import StreamYearAxis from './StreamYearAxis.svelte';
 	import StreamLegend from './StreamLegend.svelte';
+	import StreamTooltip from './StreamTooltip.svelte';
 
 	let { data } = $props();
-	let hoveredStream = $state(null);
-
-	// $inspect(hoveredStream);
+	// $inspect(hoveredData);
 
 	// dimensions of the visualization
 	const chartMargin = { top: 0, right: 60, bottom: 20, left: 60 };
 	let width = $state(400);
 	let height = $state(400);
-	let chartWidth = $derived(width - chartMargin.left - chartMargin.right);
-	let chartHeight = $derived(height - chartMargin.top - chartMargin.bottom);
+	let chartWidth = $derived(Math.max(0, width - chartMargin.left - chartMargin.right));
+	let chartHeight = $derived(Math.max(0, height - chartMargin.top - chartMargin.bottom));
 
 	const genreKeys = union(data.map((d) => d.genres)); // InternSet(3) [Set] { 'Middle Grade', 'Science Fiction', 'Romance' }
 
@@ -60,8 +59,37 @@
 		.x((d) => yearScale(d.data[0]))
 		.y0((d) => streamScale(d[0]))
 		.y1((d) => streamScale(d[1]));
+
+	const callOutData = data.filter((d) => d.year === 2013); // data for creating the initial tooltip
+	let hoveredData = $state(null);
+	let callOutMouseX = $derived(yearScale(2013)); // position x for initial tooltip
+	let callOutMouseY = $derived(chartHeight / 2); // position y for initial tooltip
+	// $inspect(callOutMouseX, callOutMouseY);
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+
+	let hoveredStream = $state(null);
+
+	$effect(() => {
+		// after all other value updates, assign initial values to tooltip variables
+		hoveredData = callOutData;
+		mouseX = callOutMouseX;
+		mouseY = callOutMouseY;
+	});
+
+	function handleMouseMove(e) {
+		const rect = e.currentTarget.getBoundingClientRect(); // get the client of chart
+		mouseX = e.clientX - rect.left; // mouse position x within the chart
+		mouseY = e.clientY - rect.top; // mouse position y within the chart
+
+		console.log(mouseX, mouseY);
+
+		const closestInvertedX = Math.round(yearScale.invert(mouseX)); // get year value from mouse position x
+		hoveredData = data.filter((d) => d.year === closestInvertedX); // filter and get tooltip data based on year
+	}
 </script>
 
+<!-- class="absolute top-0 left-0" -->
 <div
 	class="chart-outer-wrapper {currentPage.value === 3 ||
 	currentPage.value === 4 ||
@@ -70,21 +98,44 @@
 		: 'hidden'}"
 >
 	<div class="chart-inner-warpper" bind:clientWidth={width} bind:clientHeight={height}>
-		<svg class="absolute top-0 left-0" {width} {height}>
-			<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
+		<svg {width} {height}>
+			<g
+				transform={`translate(${chartMargin.left}, ${chartMargin.top})`}
+				onmousemove={handleMouseMove}
+			>
+				<!-- Transparent rect to capture mouse events -->
+				<rect
+					width={chartWidth}
+					height={chartHeight}
+					class="pointer-events-auto fill-transparent"
+				/>
 				<!-- Axis -->
 				<StreamYearAxis {yearScale} {chartWidth} {chartHeight} />
 				<!-- Streams -->
-				{#each stackedData as stream (stream.key)}
-					<path
-						transition:fade={{ duration: 1000 }}
-						d={areaGenerator(stream)}
-						fill={colorScale(stream.key)}
-						opacity={hoveredStream ? (hoveredStream.key === stream.key ? 1 : 0.2) : 0.9}
-						onmouseover={() => (hoveredStream = stream)}
-						onmouseleave={() => (hoveredStream = null)}
+				<g class="streams"
+					>{#each stackedData as stream (stream.key)}
+						<path
+							transition:fade={{ duration: 1000 }}
+							d={areaGenerator(stream)}
+							fill={colorScale(stream.key)}
+							opacity={hoveredStream ? (hoveredStream.key === stream.key ? 1 : 0.2) : 0.9}
+							onmousemove={handleMouseMove}
+							onmouseover={() => (hoveredStream = stream)}
+							onmouseleave={() => (hoveredStream = null)}
+						/>
+					{/each}
+				</g>
+				<!-- Reference Line -->
+				{#if hoveredData}
+					<line
+						x1={yearScale(hoveredData[0].year)}
+						x2={yearScale(hoveredData[0].year)}
+						y1="0"
+						y2={chartHeight}
+						stroke="var(--color-foreground)"
+						stroke-width="0.5px"
 					/>
-				{/each}
+				{/if}
 			</g>
 		</svg>
 		<!-- Legend -->
@@ -92,7 +143,9 @@
 		<!-- Chart Title -->
 		<h1 class="chart-title">Romance, Middle Grade, and Science Fiction</h1>
 		<!-- Tooltip -->
-		{#if hoveredStream}{/if}
+		{#if hoveredData}
+			<StreamTooltip {hoveredData} {chartWidth} {chartHeight} {colorScale} {mouseX} {mouseY} />
+		{/if}
 	</div>
 </div>
 
