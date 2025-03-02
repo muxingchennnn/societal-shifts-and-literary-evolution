@@ -34,4 +34,4 @@ function parseOriginalData(d) {
 	};
 }
 
-// export const ssr = false;
+export const ssr = false;

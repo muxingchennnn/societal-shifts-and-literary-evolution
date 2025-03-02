@@ -2,12 +2,14 @@
 	import { forceSimulation, forceX, forceY, forceCollide, forceManyBody } from 'd3-force';
 	import { scaleTime, scaleSqrt } from 'd3-scale';
 	import { extent, max } from 'd3-array';
-	import { currentPage, windowWidth } from '$lib/globalState.svelte.js';
+	import { currentPage, windowWidth, nodesCache } from '$lib/globalState.svelte.js';
 	import { fade } from 'svelte/transition';
 	import { selectedGenre } from '$lib/globalState.svelte.js';
 	import { genreOptions } from '$lib/data/genreOptions.js';
 	import SwarmDateAxis from '$lib/components/SwarmDateAxis.svelte';
 	import SwarmTooltip from '$lib/components/SwarmTooltip.svelte';
+
+	// $inspect(nodesCache.value);
 
 	let { data } = $props();
 	let selectedData = $derived.by(() =>
@@ -56,12 +58,26 @@
 	let calloutData = $derived.by(() => nodes.filter((d) => d.title === calloutBookTitle).at(0));
 	// $inspect(calloutData);
 
+	// $effect(() => {
+	// 	if (nodesCache.value.length > 0) {
+	// 		nodes = nodesCache.value;
+	// 	}
+	// });
+
 	$effect(() => {
 		simulation = forceSimulation(selectedData);
 
 		simulation.on('tick', () => {
 			nodes = simulation.nodes();
 		});
+
+		simulation.on('end', () => {
+			nodesCache.value = simulation.nodes();
+		});
+
+		return () => {
+			simulation.stop();
+		};
 	}); // reinstantiate simulation when data changes
 
 	$effect(() => {
@@ -88,14 +104,18 @@
 				'charge',
 				forceManyBody().strength(-4) // add repulsion between nodes
 			)
+			// .force('boundary', () => {
+			// 	selectedData.forEach((d) => {
+			// 		if (d.x < 0) d.x = 0;
+			// 		if (d.x > chartWidth) d.x = chartWidth;
+			// 		if (d.y < 0) d.y = 0;
+			// 		if (d.y > chartHeight) d.y = chartHeight;
+			// 	});
+			// })
 			.alpha(1) // start with full energy
 			.alphaDecay(0.02) // faster decay to stabilize quicker
 			.alphaMin(0.01) // stop at higher threshold
 			.restart();
-
-		return () => {
-			simulation.stop();
-		};
 	}); // update simulation forces when orientation/screen size/scale changes
 
 	$effect(() => {
@@ -122,11 +142,7 @@
 		? 'block'
 		: 'hidden'}"
 >
-	<div
-		class="chart-inner-wrapper h-full w-full"
-		bind:clientWidth={width}
-		bind:clientHeight={height}
-	>
+	<div class="chart-inner-wrapper" bind:clientWidth={width} bind:clientHeight={height}>
 		<svg class="absolute top-0 left-0" {width} {height}>
 			<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
 				<!-- Axis -->
@@ -134,7 +150,8 @@
 				<!-- Nodes -->
 				{#each nodes as node}
 					<circle
-						in:fade={{ delay: 1000, duration: 1000 }}
+						in:fade={{ delay: 3000 }}
+						class="cursor-pointer"
 						cx={node.x}
 						cy={node.y}
 						r={rScale(node.rating)}
@@ -176,13 +193,8 @@
 					 lg:fixed lg:bottom-0 lg:left-0 lg:h-[70vh] lg:mb-0;
 	}
 
-	.chart-container {
-		position: relative;
-		overflow: hidden;
-	}
-
-	circle {
-		cursor: pointer;
+	.chart-inner-wrapper {
+		@apply relative h-full w-full;
 	}
 
 	/* prettier-ignore */

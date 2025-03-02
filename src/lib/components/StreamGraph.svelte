@@ -69,11 +69,7 @@
 		? 'block'
 		: 'hidden'}"
 >
-	<div
-		class="chart-inner-warpper h-full w-full"
-		bind:clientWidth={width}
-		bind:clientHeight={height}
-	>
+	<div class="chart-inner-warpper" bind:clientWidth={width} bind:clientHeight={height}>
 		<svg class="absolute top-0 left-0" {width} {height}>
 			<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
 				<!-- Axis -->
@@ -110,8 +106,7 @@
 	}
 
 	.chart-inner-warpper {
-		position: relative;
-		overflow: hidden;
+		@apply relative h-full w-full;
 	}
 
 	/* prettier-ignore */
