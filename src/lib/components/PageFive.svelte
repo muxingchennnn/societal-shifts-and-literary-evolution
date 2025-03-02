@@ -1,3 +1,7 @@
+<script>
+	import { fade } from 'svelte/transition';
+</script>
+
 <article>
 	<p>
 		The way we categorize stories has changed over the centuries, in large part because as society
@@ -7,7 +11,7 @@
 		These graphs of three genres’ popularity over the last 50 years illustrate this idea fairly
 		well:
 	</p>
-	<p>
+	<p in:fade={{ duration: 250 }}>
 		Aspects of the genre we know today as <span class="font-[1.125rem] font-bold text-[#0D99FF]"
 			>Science Fiction</span
 		>

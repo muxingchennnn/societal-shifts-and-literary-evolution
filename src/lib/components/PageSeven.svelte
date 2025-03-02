@@ -1,9 +1,13 @@
+<script>
+	import { fade } from 'svelte/transition';
+</script>
+
 <article>
 	<p>
 		<span class="italic-serif underline underline-offset-2">The Martian </span> (2011) versus
 		<span class="italic-serif">The War of the Worlds </span> (1897).
 	</p>
-	<p>
+	<p in:fade={{ duration: 250 }}>
 		<span class="italic-serif">The Martian </span> (2011): Andy Weir really brought the “science”
 		part of “science fiction” to his debut novel. <span class="italic-serif">The Martian </span> is extremely
 		technically accurate, chronicling one man’s survival on the planet Mars after being left stranded

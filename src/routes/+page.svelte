@@ -1,6 +1,5 @@
 <script>
 	import { currentPage } from '$lib/globalState.svelte.js';
-	import BackgroundVideo from '$lib/components/BackgroundVideo.svelte';
 	import PageOne from '$lib/components/PageOne.svelte';
 	import PageTwo from '$lib/components/PageTwo.svelte';
 	import PageThree from '$lib/components/PageThree.svelte';
@@ -13,6 +12,7 @@
 	import PageTen from '$lib/components/PageTen.svelte';
 	import PageEleven from '$lib/components/PageEleven.svelte';
 	import PageTwelve from '$lib/components/PageTwelve.svelte';
+	import BackgroundVideo from '$lib/components/BackgroundVideo.svelte';
 	import StreamGraph from '$lib/components/StreamGraph.svelte';
 	import SwarmChart from '$lib/components/SwarmChart.svelte';
 
@@ -29,8 +29,8 @@
 		PageTen,
 		PageEleven,
 		PageTwelve
-	]; // dynamically render the page based on the 'currentPage' value
-	const RenderedPage = $derived(pages[currentPage.value - 1]);
+	];
+	let RenderedPage = $derived(pages[currentPage.value - 1]); // dynamically render the page based on the 'currentPage' value
 
 	let { data } = $props(); // receive data from +page.js
 	const { bookData, streamData } = data; // deconstruct the data object received
@@ -38,29 +38,8 @@
 
 <BackgroundVideo />
 <RenderedPage />
-<div
-	class="stream-ctn {currentPage.value === 3 || currentPage.value === 4 || currentPage.value === 5
-		? 'block'
-		: 'hidden'}"
->
-	<StreamGraph data={streamData} />
-</div>
-<div class="swarm-ctn {currentPage.value === 7 || currentPage.value === 11 ? 'block' : 'hidden'}">
-	<SwarmChart data={bookData} />
-</div>
+<StreamGraph data={streamData} />
+<SwarmChart data={bookData} />
 
-<style lang="postcss">
-	@reference "tailwindcss/theme";
-
-	/* prettier-ignore */
-	.stream-ctn {
-		@apply h-[90vh] w-full mb-[3rem]
-					 md:fixed md:bottom-0 md:left-0 md:h-[65vh] md:mb-0;
-	}
-
-	/* prettier-ignore */
-	.swarm-ctn {
-		@apply h-[120vh] w-full mb-[3rem]   
-					 lg:fixed lg:bottom-0 lg:left-0 lg:h-[70vh] lg:mb-0;
-	}
+<style>
 </style>
