@@ -1,13 +1,13 @@
 <script>
 	import { forceSimulation, forceX, forceY, forceCollide, forceManyBody } from 'd3-force';
-	import { scaleLinear, scaleTime, scaleBand, scaleSqrt } from 'd3-scale';
+	import { scaleTime, scaleSqrt } from 'd3-scale';
 	import { extent, max } from 'd3-array';
 	import { currentPage, windowWidth } from '$lib/globalState.svelte.js';
+	import { fade } from 'svelte/transition';
+	import { selectedGenre } from '$lib/globalState.svelte.js';
+	import { genreOptions } from '$lib/data/genreOptions.js';
 	import SwarmDateAxis from '$lib/components/SwarmDateAxis.svelte';
 	import SwarmTooltip from '$lib/components/SwarmTooltip.svelte';
-	import { fade } from 'svelte/transition';
-	import { tick } from 'svelte';
-	import { genres, selectedGenre } from '$lib/globalState.svelte.js';
 
 	let { data } = $props();
 	let selectedData = $derived.by(() =>
@@ -141,7 +141,7 @@
 	<!-- Drop Down Menu -->
 	{#if currentPage.value === 11}
 		<select bind:value={selectedGenre.value} class="dropdown-menu">
-			{#each genres as genre}
+			{#each genreOptions as genre}
 				<option value={genre.value}>
 					{genre.label}
 				</option>
