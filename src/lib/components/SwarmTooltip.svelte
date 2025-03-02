@@ -70,7 +70,7 @@
 	.tooltip {
 		@apply absolute w-[400px]
 		       flex items-start gap-[1rem]
-           rounded border border-solid border-[#2c2c2c] bg-[#2c2c2c]/40 p-[1rem] backdrop-blur-sm;
+           rounded border border-solid border-(--color-gray-800) bg-(--color-gray-800)/40 p-[1rem] backdrop-blur-sm;
 	}
 
 	.tooltip-text p {

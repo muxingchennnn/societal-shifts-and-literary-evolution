@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class="tooltip tooltip-text -translate-x-1/2 lg:translate-x-0"
+	class="tooltip -translate-x-1/2 lg:translate-x-0"
 	style="width: {tooltipWidth}px; left: {windowWidth.value <= 1024
 		? windowWidth.value / 2
 		: xPosition}px; top: {yPosition}px;"
@@ -32,7 +32,7 @@
 	<h1 class="mb-2 text-[0.875rem] font-bold">{hoveredData.at(0).year}</h1>
 	<div class="flex flex-col gap-2">
 		{#each hoveredData.toReversed() as stream, i (i)}
-			<div class="flex w-full justify-between">
+			<div class="tooltip-text flex w-full justify-between">
 				<p
 					class="relative flex items-center before:mr-2 before:block before:h-3 before:w-1 before:bg-[var(--pseudo-color)] before:content-['']"
 					style="--pseudo-color: {colorScale(stream.genres)};"
@@ -50,7 +50,7 @@
 
 	/* prettier-ignore */
 	.tooltip {
-		@apply absolute rounded border border-solid border-[#2c2c2c] bg-[#2c2c2c]/40 p-[1rem] backdrop-blur-sm;
+		@apply absolute rounded border border-solid border-(--color-gray-800) bg-(--color-gray-800)/40 p-[1rem] backdrop-blur-sm;
 	}
 
 	.tooltip-text p {
