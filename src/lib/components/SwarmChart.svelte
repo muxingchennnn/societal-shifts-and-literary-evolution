@@ -48,7 +48,7 @@
 			.range([2, isHorizontal ? 6 : 4]);
 	});
 
-	let nodes = $state([]);
+	let nodes = $state([]); // initialize nodes array
 	// $inspect(nodes);
 	let simulation;
 	let hoveredNode = $state(null);
@@ -62,7 +62,7 @@
 		simulation.on('tick', () => {
 			nodes = simulation.nodes();
 		});
-	});
+	}); // reinstantiate simulation when data changes
 
 	$effect(() => {
 		simulation
@@ -96,7 +96,7 @@
 		return () => {
 			simulation.stop();
 		};
-	});
+	}); // update simulation forces when orientation/screen size/scale changes
 
 	$effect(() => {
 		if (currentPage.value === 7) {
@@ -105,58 +105,76 @@
 		} else {
 			hoveredNode = null;
 		}
-	});
+	}); // call out a specific book on page 7
 
 	$effect(() => {
-		// decide orientation based on screen width
 		if (windowWidth.value > 1024) {
 			isHorizontal = true;
 		} else {
 			isHorizontal = false;
 		}
-	});
+	}); // change orientation based on screen size
 </script>
 
 <!-- Visualization -->
-<div class="chart-container h-full w-full" bind:clientWidth={width} bind:clientHeight={height}>
-	<svg class="absolute top-0 left-0" {width} {height}>
-		<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
-			<SwarmDateAxis {dateScale} {chartWidth} {chartHeight} {isHorizontal} />
-			{#each nodes as node}
-				<circle
-					in:fade={{ delay: 1000, duration: 1000 }}
-					cx={node.x}
-					cy={node.y}
-					r={rScale(node.rating)}
-					fill={hoveredNode ? (hoveredNode.id === node.id ? '#0D99FF' : '#f5f5f5') : '#f5f5f5'}
-					opacity={hoveredNode ? (hoveredNode.id === node.id ? 1 : 0.2) : 1}
-					onmouseover={() => (hoveredNode = node)}
-					onmouseleave={() => (hoveredNode = null)}
-				/>
-			{/each}
-		</g>
-	</svg>
-	<h1 class="chart-title">{selectedGenre.value} books from 70s to 20s</h1>
+<div
+	class="chart-outer-wrapper {currentPage.value === 7 || currentPage.value === 11
+		? 'block'
+		: 'hidden'}"
+>
+	<div
+		class="chart-inner-wrapper h-full w-full"
+		bind:clientWidth={width}
+		bind:clientHeight={height}
+	>
+		<svg class="absolute top-0 left-0" {width} {height}>
+			<g transform={`translate(${chartMargin.left}, ${chartMargin.top})`}>
+				<!-- Axis -->
+				<SwarmDateAxis {dateScale} {chartWidth} {chartHeight} {isHorizontal} />
+				<!-- Nodes -->
+				{#each nodes as node}
+					<circle
+						in:fade={{ delay: 1000, duration: 1000 }}
+						cx={node.x}
+						cy={node.y}
+						r={rScale(node.rating)}
+						fill={hoveredNode ? (hoveredNode.id === node.id ? '#0D99FF' : '#f5f5f5') : '#f5f5f5'}
+						opacity={hoveredNode ? (hoveredNode.id === node.id ? 1 : 0.2) : 1}
+						onmouseover={() => (hoveredNode = node)}
+						onmouseleave={() => (hoveredNode = null)}
+					/>
+				{/each}
+			</g>
+		</svg>
+		<!-- Chart Title -->
+		<h1 class="chart-title">{selectedGenre.value} books from 70s to 20s</h1>
 
-	<!-- Drop Down Menu -->
-	{#if currentPage.value === 11}
-		<select bind:value={selectedGenre.value} class="dropdown-menu">
-			{#each genreOptions as genre}
-				<option value={genre.value}>
-					{genre.label}
-				</option>
-			{/each}
-		</select>
-	{/if}
+		<!-- Drop Down Menu -->
+		{#if currentPage.value === 11}
+			<select bind:value={selectedGenre.value} class="dropdown-menu">
+				{#each genreOptions as genre}
+					<option value={genre.value}>
+						{genre.label}
+					</option>
+				{/each}
+			</select>
+		{/if}
 
-	<!-- Tooltip -->
-	{#if hoveredNode}
-		<SwarmTooltip {hoveredNode} {chartWidth} {chartHeight} />
-	{/if}
+		<!-- Tooltip -->
+		{#if hoveredNode}
+			<SwarmTooltip {hoveredNode} {chartWidth} {chartHeight} />
+		{/if}
+	</div>
 </div>
 
 <style lang="postcss">
 	@reference "tailwindcss/theme";
+
+	/* prettier-ignore */
+	.chart-outer-wrapper {
+		@apply h-[120vh] w-full mb-[3rem]   
+					 lg:fixed lg:bottom-0 lg:left-0 lg:h-[70vh] lg:mb-0;
+	}
 
 	.chart-container {
 		position: relative;
