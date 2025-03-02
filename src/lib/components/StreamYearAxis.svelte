@@ -15,7 +15,7 @@
 			<text x="8" y={chartHeight} fill="var(--color-foreground)"
 				>{windowWidth.value >= 768 ? tick.toString().slice(-2) + 's' : tick}</text
 			>
-			<line x1="0" x2="0" y1="0" y2={chartHeight} stroke="var(--color-gray-500)"></line>
+			<line x1="0" x2="0" y1="0" y2={chartHeight} stroke="var(--color-gray-700)"></line>
 		</g>
 	{/each}
 </g>

@@ -14,7 +14,7 @@
 				<text x="8" y={chartHeight} fill="var(--color-foreground)"
 					>{tick.getFullYear().toString().slice(-2) + 's'}</text
 				>
-				<line x1="0" x2="0" y1="0" y2={chartHeight} stroke="var(--color-gray-500)"></line>
+				<line x1="0" x2="0" y1="0" y2={chartHeight} stroke="var(--color-gray-700)"></line>
 			</g>
 		{/each}
 	{:else}
@@ -23,7 +23,7 @@
 				<text x={chartWidth - 28} y="16" fill="var(--color-foreground)"
 					>{tick.getFullYear().toString().slice(-2) + 's'}</text
 				>
-				<line x1="0" x2={chartWidth} y1="0" y2="0" stroke="var(--color-gray-500)"></line>
+				<line x1="0" x2={chartWidth} y1="0" y2="0" stroke="var(--color-gray-700)"></line>
 			</g>
 		{/each}
 	{/if}
