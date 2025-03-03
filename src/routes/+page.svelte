@@ -15,6 +15,7 @@
 	import BackgroundVideo from '$lib/components/BackgroundVideo.svelte';
 	import StreamGraph from '$lib/components/StreamGraph.svelte';
 	import SwarmChart from '$lib/components/SwarmChart.svelte';
+	import { FaSolidFaceSadCry } from 'svelte-icons-pack/fa';
 
 	let { data } = $props(); // receive data from +page.js
 	const { bookData, streamData } = data; // deconstruct the data object received
@@ -40,6 +41,3 @@
 <RenderedPage />
 <StreamGraph data={streamData} />
 <SwarmChart data={bookData} />
-
-<style>
-</style>

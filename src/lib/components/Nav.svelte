@@ -68,14 +68,6 @@
 	/>
 </button>
 
-<!-- Nav bar stuff if needed
-<div class="topnav" role="navigation">
-	<a class="active" href="#home">What makes a genre?</a>
-	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-		<i class="fa fa-bars"></i>
-	</a>
-</div> -->
-
 <style>
 	@reference "../../app.css";
 
