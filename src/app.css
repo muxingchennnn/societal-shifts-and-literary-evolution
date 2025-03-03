@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
+	/* --breakpoint-*: initial reset all of the default breakpoints */
+	--breakpoint-*: initial;
 	--breakpoint-xs: 480px;
 	--breakpoint-sm: 640px;
 	--breakpoint-md: 768px;

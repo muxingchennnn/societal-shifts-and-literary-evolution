@@ -1,13 +1,19 @@
 <script>
 	let columns = $state(0);
+	let width = $state(400);
 
-	// Function to update columns based on screen size
-	function updateColumns() {
-		const width = window.innerWidth;
+	function getBreakpointValue(size) {
+		// Get the computed value of the CSS custom property
+		let styles = getComputedStyle(document.documentElement);
+		let breakpoint = styles.getPropertyValue(`--breakpoint-${size}`);
 
-		if (width >= 1024) {
+		return parseInt(breakpoint.replace('px', ''));
+	}
+
+	function updateColumns(width) {
+		if (width >= getBreakpointValue('lg')) {
 			columns = 12;
-		} else if (width >= 640) {
+		} else if (width >= getBreakpointValue('sm')) {
 			columns = 8;
 		} else {
 			columns = 4;
@@ -15,18 +21,13 @@
 	}
 
 	$effect(() => {
-		updateColumns();
-		window.addEventListener('resize', updateColumns);
-
-		// Clean up event listener on component destroy
-		return () => {
-			window.removeEventListener('resize', updateColumns);
-		};
+		updateColumns(width);
 	});
 </script>
 
+<svelte:window bind:innerWidth={width} />
 <div class="grid-ctn">
-	{#each Array(columns).fill(0) as _, index}
+	{#each Array(columns) as _, index}
 		<div class="col-span-1 bg-gray-500 text-center text-base font-bold">
 			Col{index + 1}
 		</div>
