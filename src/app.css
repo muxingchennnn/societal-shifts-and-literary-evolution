@@ -24,42 +24,46 @@
 	--color-foreground: #f8f8f8;
 }
 
-body {
-	position: relative;
-	background-color: var(--color-background);
-	color: var(--color-foreground);
-	font-family: 'Geist Variable', sans-serif;
-	font-size: 1rem;
-	font-optical-sizing: auto;
+@layer base {
+	/* style of the body */
+	/* prettier-ignore */
+	body {
+		position: relative;
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-optical-sizing: auto;
+	}
+
+	/* style of the text components */
+	/* prettier-ignore */
+	article {
+		@apply mx-auto max-w-[400px] mt-[4rem] mb-[2rem]
+					flex flex-col gap-[1rem] 
+					sm:max-w-[600px]
+					md:max-w-[750px];
+	}
+
+	/* prettier-ignore */
+	p {
+		@apply text-[1rem] leading-[1.5rem] tracking-[-0.011rem] font-[400]
+					 sm:text-[1.125rem] sm:leading-[1.5rem] sm:tracking-[-0.014rem];
+	}
 }
 
 /* style of the grid on page 12 */
 /* prettier-ignore */
-.grid-ctn {
-  @apply grid grid-cols-4 mx-[2rem] gap-x-[1rem] gap-y-[2px] max-w-[1440px] 
-         sm:grid-cols-8 sm:mx-[3rem] 
-         md:gap-x-[1.5rem]
-         lg:grid-cols-12 
-         xl:mx-auto;
-}
-
-/* style of the text components */
-/* prettier-ignore */
-article {
-  @apply mx-auto max-w-[400px] mt-[4rem] mb-[2rem]
-         flex flex-col gap-[1rem] 
-         sm:max-w-[600px]
-         md:max-w-[750px];
+@utility grid-ctn {
+	@apply grid grid-cols-4 mx-[2rem] gap-x-[1rem] gap-y-[2px] max-w-[1440px] 
+					sm:grid-cols-8 sm:mx-[3rem] 
+					md:gap-x-[1.5rem]
+					lg:grid-cols-12 
+					xl:mx-auto;
 }
 
 /* prettier-ignore */
-p {
-  @apply text-[1rem] leading-[1.5rem] tracking-[-0.011rem] font-[400]
-         sm:text-[1.125rem] sm:leading-[1.5rem] sm:tracking-[-0.014rem];
-}
-
-/* prettier-ignore */
-.italic-serif {
+@utility italic-serif {
   @apply font-serif text-[1.125rem] italic 
          sm:text-[1.25rem];
 }

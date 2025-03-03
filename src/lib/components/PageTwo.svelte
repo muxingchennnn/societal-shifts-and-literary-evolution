@@ -28,7 +28,3 @@
 		want to read.
 	</p>
 </article>
-
-
-<style>
-</style>

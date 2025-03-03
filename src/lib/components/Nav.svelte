@@ -76,8 +76,8 @@
 	</a>
 </div> -->
 
-<style lang="postcss">
-	@reference "tailwindcss/theme";
+<style>
+	@reference "../../app.css";
 
 	/* prettier-ignore */
 	.nav-tab {

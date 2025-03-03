@@ -16,6 +16,9 @@
 	import StreamGraph from '$lib/components/StreamGraph.svelte';
 	import SwarmChart from '$lib/components/SwarmChart.svelte';
 
+	let { data } = $props(); // receive data from +page.js
+	const { bookData, streamData } = data; // deconstruct the data object received
+
 	const pages = [
 		PageOne,
 		PageTwo,
@@ -31,9 +34,6 @@
 		PageTwelve
 	];
 	let RenderedPage = $derived(pages[currentPage.value - 1]); // dynamically render the page based on the 'currentPage' value
-
-	let { data } = $props(); // receive data from +page.js
-	const { bookData, streamData } = data; // deconstruct the data object received
 </script>
 
 <BackgroundVideo />

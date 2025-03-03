@@ -133,8 +133,8 @@
 	</div>
 </footer>
 
-<style lang="postcss">
-	@reference "tailwindcss/theme";
+<style>
+	@reference "../../app.css";
 
 	.note-body p {
 		@apply font-sans text-[1rem] leading-[1.5rem] font-[200] tracking-[-0.011rem];
