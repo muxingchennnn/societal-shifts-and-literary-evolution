@@ -34,17 +34,66 @@
 		"scope": "javascript, typescript, svelte"
 	},
 
+	"Svelte $bindable()": {
+		"prefix": "s-bi",
+		"body": "${1:value} = $$bindable()${2}",
+		"description": "Creates a svelte $bindable() declaration",
+		"scope": "javascript, typescript, svelte"
+	},
+
 	"Svelte $inspect()": {
 		"prefix": "s-in",
-		"body": "$$inspect(${1})",
+		"body": "$$inspect(${1});${2}",
 		"description": "Creates a svelte $inspect() declaration",
 		"scope": "javascript, typescript, svelte"
 	},
 
-	"Svelte {#each...}": {
+	"Svelte {#each ...}...{/each}": {
 		"prefix": "s-each",
 		"body": "{#each ${1:items} as ${2:item}, i (${3:id})}\n\t${4}\n{/each}",
-		"description": "Creates a svelte $inspect() declaration",
+		"description": "Creates a svelte {#each ...}...{/each} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#if ...}...{/if}": {
+		"prefix": "s-if",
+		"body": "{#if ${1:condition}}\n\t${2}\n{/if}",
+		"description": "Creates a svelte {#if ...}...{/if} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#if ...}...{:else}...{/if}": {
+		"prefix": "s-else",
+		"body": "{#if ${1:condition}}\n\t${2}\n{:else}\n\t${3}\n{/if}",
+		"description": "Creates a svelte {#if ...}...{:else}...{/if} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#if ...}...{:else if...}...{/if}": {
+		"prefix": "s-elseif",
+		"body": "{#if ${1:condition}}\n\t${2}\n{:else if ${3:condition}}\n\t${4}\n{/if}",
+		"description": "Creates a svelte {#if ...}...{:else if ...}...{/if} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#key ...}...{/key}": {
+		"prefix": "s-key",
+		"body": "{#key ${1:condition}}\n\t${2}\n{/key}",
+		"description": "Creates a svelte {#key ...}...{/key} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {#snippet name()}...{/snippet}": {
+		"prefix": "s-sni",
+		"body": "{#snippet ${1:name}(${2:param})}\n\t${3}\n{/snippet}",
+		"description": "Creates a svelte {#snippet name()}...{/snippet} template",
+		"scope": "javascript, typescript, svelte"
+	},
+
+	"Svelte {@render ...}": {
+		"prefix": "s-ren",
+		"body": "{@render ${1:snippetName}(${2})}${3}",
+		"description": "Creates a svelte {@render ...} template",
 		"scope": "javascript, typescript, svelte"
 	}
 }
