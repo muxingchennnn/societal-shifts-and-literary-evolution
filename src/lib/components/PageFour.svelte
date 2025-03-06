@@ -3,15 +3,15 @@
 </script>
 
 <article>
-	<p>
+	<p tabIndex="0">
 		The way we categorize stories has changed over the centuries, in large part because as society
 		and technology develop, so too do the stories we tell.
 	</p>
-	<p>
+	<p tabIndex="0">
 		These graphs of three genres’ popularity over the last 50 years illustrate this idea fairly
 		well:
 	</p>
-	<p in:fade={{ duration: 250 }}>
+	<p in:fade={{ duration: 250 }} tabIndex="0">
 		<span class="font-[1.125rem] font-bold text-[#FFCD29]">Middle Grade & Children’s Fiction</span> has
 		also increased in popularity over the years. Books for that specific demographic- children- were
 		not commonly written before the 1850s, and were not particularly marketable before the 1970s. For

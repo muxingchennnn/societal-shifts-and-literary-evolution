@@ -14,7 +14,7 @@
 
 <article>
 	<p>Explore Science Fiction books, or switch to another genre through the drop down menu!</p>
-	<p>
+	<p tabIndex="0">
 		Over the last fifty years, {#key selectedGenre.value}<span in:fade={{ duration: 250 }}
 				>{selectedGenre.value}</span
 			>{/key} was most popular in {#key selectedGenreYear}<span in:fade={{ duration: 250 }}
@@ -22,7 +22,7 @@
 			>{/key}.
 	</p>
 	{#key selectedGenreText}
-		<p in:fly={{ y: 5, duration: 800 }}>
+		<p in:fly={{ y: 5, duration: 800 }} tabIndex="0">
 			{@html selectedGenreText}
 		</p>
 	{/key}

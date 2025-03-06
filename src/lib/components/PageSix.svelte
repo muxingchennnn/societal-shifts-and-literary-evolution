@@ -1,5 +1,5 @@
 <article>
-	<p>
+	<p tabIndex="0">
 		Genre is an ever-evolving concept! <span class="font-[800]"
 			>Authors and audiences are influenced by the time & society in which they live; as a result,
 			the categories into which we place stories evolves alongside them.</span
@@ -8,8 +8,8 @@
 		fiction.” Books which might today be marketed as “dark paranormal romantasy with science fiction
 		and horror elements” could have been published as merely “gothic” several decades ago.
 	</p>
-	<p>
-		The technology and societal norms of the day matter just as much in the categorization as they do
-		the writing of the book itself. Take, for example…
+	<p tabIndex="0">
+		The technology and societal norms of the day matter just as much in the categorization as they
+		do the writing of the book itself. Take, for example…
 	</p>
 </article>

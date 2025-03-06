@@ -3,11 +3,11 @@
 </script>
 
 <article>
-	<p>
+	<p tabIndex="0">
 		<span class="italic-serif underline underline-offset-2">The Martian </span> (2011) versus
 		<span class="italic-serif">The War of the Worlds </span> (1897).
 	</p>
-	<p in:fade={{ duration: 250 }}>
+	<p in:fade={{ duration: 250 }} tabIndex="0">
 		The technically-specific writing reflects the incredible advancement of human capabilities
 		that’s taken place over just the last few decades. Humanity went from its first engine-powered
 		flight (1903) to its first manned orbit (1961) to its first landing on the Moon (1969) in the
