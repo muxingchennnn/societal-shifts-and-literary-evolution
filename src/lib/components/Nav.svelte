@@ -7,7 +7,7 @@
 	function handleKeyNavigation(event) {
 		if (event.key === 'ArrowLeft') {
 			currentPage.value = Math.max(1, currentPage.value - 1);
-		} else if (['ArrowRight', ' ', 'Enter'].includes(event.key)) {
+		} else if (['ArrowRight', ' '].includes(event.key)) {
 			event.preventDefault(); // Prevents spacebar from scrolling down
 			currentPage.value = Math.min(12, currentPage.value + 1);
 		}
@@ -26,6 +26,8 @@
 	<div class="flex h-[3rem] items-center gap-1">
 		{#each Array(12) as _, i (i)}
 			<button
+				tabindex="-1"
+				aria-hidden="true"
 				class="nav-tab {currentPage.value === i + 1
 					? 'bg-purple-500 hover:bg-purple-500'
 					: 'bg-gray-400 opacity-30'} "
@@ -38,35 +40,42 @@
 
 <!-- Button Navigation -->
 <!-- Left Button -->
-<button
-	class="nav-button left-0 translate-x-[-50%] justify-end rounded-e-[3rem] hover:translate-x-[-45%] {windowWidth.value <=
-	768
-		? 'w-[4rem]'
-		: 'w-[6rem]'}"
-	onclick={() => (currentPage.value = Math.max(1, currentPage.value - 1))}
->
-	<Icon
-		src={RiArrowsArrowDropLeftLine}
-		viewBox="0 0 1024 1024"
-		color="white"
-		size={windowWidth.value <= 768 ? '36' : '48'}
-	/>
-</button>
+{#if currentPage.value !== 1}
+	<button
+		aria-label="Return to step {currentPage.value - 1} of 12"
+		class="nav-button left-0 translate-x-[-50%] justify-end rounded-e-[3rem] hover:translate-x-[-45%] {windowWidth.value <=
+		768
+			? 'w-[4rem]'
+			: 'w-[6rem]'}"
+		onclick={() => (currentPage.value = Math.max(1, currentPage.value - 1))}
+	>
+		<Icon
+			src={RiArrowsArrowDropLeftLine}
+			viewBox="0 0 1024 1024"
+			color="white"
+			size={windowWidth.value <= 768 ? '36' : '48'}
+		/>
+	</button>
+{/if}
 <!-- Right Button -->
-<button
-	class="nav-button right-0 translate-x-[50%] justify-start rounded-s-[3rem] hover:translate-x-[45%] {windowWidth.value <=
-	768
-		? 'w-[4rem]'
-		: 'w-[6rem]'}"
-	onclick={() => (currentPage.value = Math.min(12, currentPage.value + 1))}
->
-	<Icon
-		src={RiArrowsArrowDropRightLine}
-		viewBox="0 0 1024 1024"
-		color="white"
-		size={windowWidth.value <= 768 ? '36' : '48'}
-	/>
-</button>
+{#if currentPage.value !== 12}
+	<button
+		role="button"
+		aria-label="Advance to step {currentPage.value + 1} of 12"
+		class="nav-button right-0 translate-x-[50%] justify-start rounded-s-[3rem] hover:translate-x-[45%] {windowWidth.value <=
+		768
+			? 'w-[4rem]'
+			: 'w-[6rem]'}"
+		onclick={() => (currentPage.value = Math.min(12, currentPage.value + 1))}
+	>
+		<Icon
+			src={RiArrowsArrowDropRightLine}
+			viewBox="0 0 1024 1024"
+			color="white"
+			size={windowWidth.value <= 768 ? '36' : '48'}
+		/>
+	</button>
+{/if}
 
 <style>
 	@reference "../../app.css";
