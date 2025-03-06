@@ -164,7 +164,7 @@
 			</g>
 		</svg>
 		<!-- Chart Title -->
-		<h1 class="chart-title">{selectedGenre.value} books from 70s to 20s</h1>
+		<h1 class="chart-title">Selected {selectedGenre.value} Books from the 1970s to the 2020s</h1>
 
 		<!-- Drop Down Menu -->
 		{#if currentPage.value === 11}

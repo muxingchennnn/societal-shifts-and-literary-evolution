@@ -141,7 +141,9 @@
 		<!-- Legend -->
 		<div class="absolute top-[3rem] left-[3rem]"><StreamLegend {colorScale} /></div>
 		<!-- Chart Title -->
-		<h1 class="chart-title">Romance, Middle Grade, and Science Fiction</h1>
+		<h1 class="chart-title">
+			Popularity of Romance, Middle Grade, and Science Fiction Over the Past Five Decades
+		</h1>
 		<!-- Tooltip -->
 		{#if hoveredData}
 			<StreamTooltip {hoveredData} {chartWidth} {chartHeight} {colorScale} {mouseX} {mouseY} />
