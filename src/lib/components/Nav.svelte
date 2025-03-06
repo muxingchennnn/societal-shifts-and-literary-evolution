@@ -27,7 +27,7 @@
 		{#each Array(12) as _, i (i)}
 			<button
 				tabindex="-1"
-				aria-hidden="true"
+				aria-label="page {currentPage.value} of 12"
 				class="nav-tab {currentPage.value === i + 1
 					? 'bg-purple-500 hover:bg-purple-500'
 					: 'bg-gray-400 opacity-30'} "
@@ -60,7 +60,6 @@
 <!-- Right Button -->
 {#if currentPage.value !== 12}
 	<button
-		role="button"
 		aria-label="Advance to step {currentPage.value + 1} of 12"
 		class="nav-button right-0 translate-x-[50%] justify-start rounded-s-[3rem] hover:translate-x-[45%] {windowWidth.value <=
 		768
