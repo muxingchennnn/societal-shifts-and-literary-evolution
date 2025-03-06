@@ -3,15 +3,8 @@
 	import { references } from '$lib/data/referenceInfo';
 </script>
 
-<!-- 
-{#snippet reference(d)}
-	<p>
-		- {d.author ? d.author : ''}. {d.year ? d.year : ''}.
-		<a tabIndex="-1" target="_blank" href={d.link}>{d.title ? d.title : ''}.</a>
-	</p>
-{/snippet} -->
-
 <!-- <Grid /> -->
+
 <footer class="grid-ctn note-body mt-[4rem] mb-[4rem] h-auto">
 	<p class="col-span-4 h-auto" tabIndex="0">
 		A story made by Muxing Chen and Bethany Ward <br /><br /> Advised by Prof. Rahul Bhargava<br />
@@ -27,7 +20,9 @@
 				{#each reference.referenceContent as item}
 					<p>
 						- {item.author ? item.author : ''}. {item.year ? item.year : ''}.
-						<a tabIndex="-1" target="_blank" href={item.link}>{item.title ? item.title : ''}.</a>
+						<a tabIndex="-1" target="_blank" href={item.link ? item.link : ''}
+							>{item.title ? item.title : ''}.</a
+						>
 					</p>
 				{/each}
 			</section>
